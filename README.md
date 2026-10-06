@@ -284,6 +284,8 @@ If the runtime disconnects, run the same cell again: training resumes automatica
 ├── decoding.py            # greedy + beam search, Translator class, BLEU evaluation
 ├── Inference.ipynb        # validation examples and custom sentences
 ├── Beam_Search.ipynb      # greedy vs beam comparison, BLEU sweeps
+├── en-ar2.ipynb      # training notebook with per epoch results
+├── en-ar2cont.ipynb      
 └── attention_visual.ipynb # encoder / decoder / cross attention heatmaps
 ```
 
