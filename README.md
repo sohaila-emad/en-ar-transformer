@@ -94,7 +94,8 @@ OPUS-100 is noisy: some pairs are misaligned or very free translations, which li
 
 ### Loss curves
 
-![Training and validation loss](assets/loss_curves.png)
+<img width="1152" height="672" alt="image" src="https://github.com/user-attachments/assets/882233c3-98e1-4b7d-8151-e940cd589ebe" />
+
 
 | Epoch | Train loss | Val loss |
 |---:|---:|---:|
@@ -123,7 +124,8 @@ Evaluated with [sacreBLEU](https://github.com/mjpost/sacrebleu) (default setting
 
 (500 validation sentences.)
 
-![BLEU results](assets/bleu_results.png)
+<img width="1680" height="672" alt="image" src="https://github.com/user-attachments/assets/71b33084-3d17-4013-a6ef-6f5a7c5995ef" />
+
 
 **Beam-size / repeat-blocking sweep** (300 validation sentences, greedy = 4.99):
 
@@ -179,7 +181,8 @@ All figures below use one validation sentence and the greedy translation:
 
 ### Cross-attention: where alignment shows up
 
-![Cross-attention heatmaps](assets/cross_attention.png)
+<img width="2000" height="1760" alt="image" src="https://github.com/user-attachments/assets/946dc2f2-29e2-48e8-9128-6e3667603733" />
+
 
 Rows are generated Arabic tokens and columns are English source tokens.
 
@@ -191,13 +194,15 @@ This also explains the repetition in the greedy output. Both copies of "لا ي�
 
 ### Decoder self-attention: attention sinks
 
-![Decoder self-attention](assets/decoder_attention.png)
+<img width="2400" height="864" alt="image" src="https://github.com/user-attachments/assets/2be47999-9457-4053-b597-be389d43b0ea" />
+
 
 In layer 2, several heads send nearly all of their attention to the first token `[SOS]`: six of the eight heads have an average peak attention of 84–97% per position, and that peak is almost always `[SOS]`. Heads with nothing useful to do seem to park their attention on a fixed position, a known "attention sink" behavior. Layers 0 and 1 are more scattered: their heads spread attention over several earlier tokens or favour a few specific ones.
 
 ### How focused are the heads?
 
-![Attention entropy per layer](assets/attention_entropy.png)
+<img width="1312" height="672" alt="image" src="https://github.com/user-attachments/assets/2d7dff8d-d6e6-4477-befe-03cc2c02231a" />
+
 
 Mean attention entropy (lower = more peaked) over the 8 heads of each plotted layer. Cross-attention becomes steadily more focused with depth (1.51 → 1.25 → 0.89), and decoder self-attention in layer 2 is the most peaked (0.42), mostly because of the sink heads. Encoder self-attention stays fairly diffuse and did not show clean, interpretable patterns for this sentence.
 
@@ -279,8 +284,7 @@ If the runtime disconnects, run the same cell again: training resumes automatica
 ├── decoding.py            # greedy + beam search, Translator class, BLEU evaluation
 ├── Inference.ipynb        # validation examples and custom sentences
 ├── Beam_Search.ipynb      # greedy vs beam comparison, BLEU sweeps
-├── attention_visual.ipynb # encoder / decoder / cross attention heatmaps
-└── assets/                # figures used in this README
+└── attention_visual.ipynb # encoder / decoder / cross attention heatmaps
 ```
 
 ---
